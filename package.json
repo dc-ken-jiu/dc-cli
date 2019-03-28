@@ -1,0 +1,20 @@
+{
+  "name": "crx-cli",
+  "version": "1.2.3",
+  "description": "a tool for init a vue project",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "crx-cli": "bin/crx-cli.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.9.0",
+    "inquirer": "^6.2.2",
+    "ora": "^3.2.0"
+  }
+}
