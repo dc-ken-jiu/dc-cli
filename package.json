@@ -1,6 +1,6 @@
 {
   "name": "crx-cli",
-  "version": "1.2.3",
+  "version": "2.0.0",
   "description": "a tool for init a vue project",
   "main": "bin/index.js",
   "scripts": {
