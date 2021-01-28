@@ -1,57 +1,78 @@
 'use strict'
-const exec = require('child_process').exec  // 这个是node自带调用自窗口执行shell命令的方法
-const chalk = require('chalk')
-const ora = require('ora')
-const projectUrl = 'https://github.com/Jiuto/init-templates.git'
+const exec = require('child_process').exec;  // 这个是node自带调用自窗口执行shell命令的方法
+const chalk = require('chalk');
+const ora = require('ora');
+const inquirer = require('inquirer');
+const download = require('download-git-repo');
 
-function install(childPath){
-    process.chdir(childPath)
-    console.log(chalk.whiteBright('npm installation started'))
-    const installing = ora('npm installing...');
-    installing.start()
-    let installStart=new Date().getTime()
+const promptList = [
+    {
+      type: 'confirm',
+      message: 'Do you want to install npm',
+      name: 'watch'
+    }
+];
+
+const vue_projectUrl = 'Jiuto/init-templates';
+const react_projectUrl = 'Jiuto/init-react-templates';
+
+// 安装依赖
+function installNPM(projectNmae){
+    // 进入子目录
+    process.chdir(process.cwd()+'/'+projectNmae);
+
+    let installStart=new Date().getTime();
+
+    console.log(chalk.whiteBright('npm installation started'));
+
+    let loading = ora('npm loading...');
+    loading.start();    
+
     exec(`npm install`, (error) => {
         if(error){
-            installing.stop()
-            console.log(error)
-            console.log(chalk.redBright("failed to install npm"))
+            loading.stop();
+            console.log(error);
+            console.log(chalk.redBright("failed to install npm"));
         }else{
-            installing.succeed()
-            console.log(chalk.greenBright("npm install successed"))
-            let installEnd=new Date().getTime()
-            console.log(chalk.whiteBright('take '+(installEnd-installStart)+'ms to install npm'))
+            loading.succeed();
+            console.log(chalk.greenBright("npm install successed"));
+            let installEnd=new Date().getTime();
+            console.log(chalk.whiteBright('take '+(installEnd-installStart)+'ms to install npm'));
         }
         process.exit()
     })
 }
 
-module.exports = function(projectNmae,inpm) {
+module.exports = function(type, projectNmae) {
 
-    let cmdStr = `git clone `+projectUrl+` `+projectNmae;
-    let childPath=''+projectNmae
+    let initStart=new Date().getTime();
 
-    console.log(chalk.whiteBright('initialization started'))
-    const loading = ora('loading templates...');
-    loading.start()
+    let url = type === 'vue' ? vue_projectUrl : type === 'react' ? react_projectUrl : '';
 
-    let initStart=new Date().getTime()
-    exec(cmdStr, (error, stdout, stderr) => {
+    if(!url) {
+        console.log(chalk.redBright("type must be vue or react"));
+        return
+    }
+
+    console.log(chalk.whiteBright('initialization started'));
+
+    let loading = ora('loading templates...');
+    loading.start();
+
+    download(url, projectNmae, (error) => {
         if (error) {
-            loading.stop()
-            console.log(error)
-            console.log(chalk.redBright("failed to init"))
-            process.exit()
+            loading.stop();
+            console.log(error);
+            console.log(chalk.redBright("failed to init"));
         }else{
-            loading.succeed()
-            console.log(chalk.greenBright("init successed"))
-            let initEnd=new Date().getTime()
-            console.log(chalk.whiteBright('take '+(initEnd-initStart)+'ms to init'))
+            loading.succeed();
+            console.log(chalk.greenBright("init successed"));
+            let initEnd=new Date().getTime();
+            console.log(chalk.whiteBright('take '+(initEnd-initStart)+'ms to init'));
 
-            if(inpm){
-                install(childPath)
-            }else{
-                process.exit()
-            }
+            inquirer.prompt(promptList).then(answers => {
+                if(answers.watch) installNPM(projectNmae)
+            })
         }
     })
 }
