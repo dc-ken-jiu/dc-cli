@@ -1,5 +1,5 @@
 {
-  "name": "crx-cli",
+  "name": "dc-cli",
   "version": "2.0.0",
   "description": "a tool for init a vue or react project",
   "main": "bin/index.js",
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "crx-cli": "bin/crx-cli.js"
+    "dc-cli": "bin/dc-cli.js"
   },
   "dependencies": {
     "chalk": "^2.4.2",

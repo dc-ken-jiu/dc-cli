@@ -1,7 +1,7 @@
-### crx-cli脚手架工具
+### dc-cli脚手架工具
 
-`$ crx-cli init|i [type] [projectName]`
+`$ dc-cli init|i [type] [projectName]`
 
 使用指令init或i执行项目初始化命令，type类型为vue或react，项目名称projectName为必选参数
 
-[查看文档](https://jiuto.github.io/crxcli_vuepress/)
+[查看文档](https://jiuto.github.io/dc-cli_vuepress/)

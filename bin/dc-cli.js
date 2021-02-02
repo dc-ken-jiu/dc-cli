@@ -17,5 +17,5 @@ program
 program.parse(process.argv) //必须，解析命令行参数argv
 
 if(!program.args.length){
-    program.help()  // 如果只是输入 "crx-cli"没带参数，就展示能输入的所有命令
+    program.help()  // 如果只是输入 "dc-cli"没带参数，就展示能输入的所有命令
 }
