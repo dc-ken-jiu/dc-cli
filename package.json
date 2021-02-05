@@ -3,11 +3,6 @@
     "version": "3.0.0",
     "description": "a tool for init a vue or react project",
     "main": "index.js",
-    "scripts": {
-        "start": "create-react-app demo --use-npm",
-        "init": "vue init webpack demo1",
-        "create": "vue create hello-world"
-    },
     "author": "crx,dxj",
     "license": "ISC",
     "bin": {
