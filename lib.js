@@ -13,8 +13,8 @@ const promptList = [
     }
 ];
 
-const vue_projectUrl = 'Jiuto/init-templates';
-const react_projectUrl = 'Jiuto/init-react-templates';
+const vue_projectUrl = 'dc-ken-jiu/dc-vue';
+const react_projectUrl = 'dc-ken-jiu/dc-react';
 
 // 安装依赖
 function installNPM(projectNmae){
