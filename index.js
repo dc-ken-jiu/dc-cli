@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 /*
  * @Description:
  * @Author: dingxuejin
  * @Date: 2021-02-03 18:06:03
- * @LastEditTime: 2021-02-04 13:47:05
+ * @LastEditTime: 2021-02-05 15:31:07
  * @LastEditors: dingxuejin
  */
 
