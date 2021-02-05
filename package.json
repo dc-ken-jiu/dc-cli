@@ -1,6 +1,6 @@
 {
     "name": "@dc/cli",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "description": "a tool for init a vue or react project",
     "author": "crx,dxj",
     "license": "ISC",
