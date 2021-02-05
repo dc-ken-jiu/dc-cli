@@ -20,7 +20,6 @@ function init() {
         .option('--info', 'print environment debug info')
         .option('--use-react-cli [value]', 'use react-cli generate project')
         .option('--use-vue-cli [value]', 'use vue-cli generate project')
-        .option('--use-vue-cli')
         .option('--template <type>', 'init templet', "vue")
         .allowUnknownOption()
         .on('--help', () => {
@@ -121,7 +120,7 @@ function init() {
 }
 
 async function createApp(name, template, useReactCli, useVueCli) {
-    checkAppName(appName);
+    checkAppName(name);
     //使用react-cli安装模板项目
     if (useReactCli) {
         await exec(name, "reactCli", useReactCli)
